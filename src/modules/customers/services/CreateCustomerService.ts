@@ -21,13 +21,10 @@ class CreateCustomerService {
     const customerExists = await this.customersRepository.findByEmail(email);
 
     if (customerExists) {
-      throw new AppError('This e-mail is already assign to a customer.');
+      throw new AppError('Email address already used.');
     }
 
-    const customer = await this.customersRepository.create({
-      name,
-      email,
-    });
+    const customer = await this.customersRepository.create({ name, email });
 
     return customer;
   }

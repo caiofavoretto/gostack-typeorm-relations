@@ -13,7 +13,7 @@ import Product from '@modules/products/infra/typeorm/entities/Product';
 
 @Entity('orders_products')
 class OrdersProducts {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: string;
 
   @ManyToOne(() => Order, order => order.order_products)
@@ -30,10 +30,10 @@ class OrdersProducts {
   @Column()
   order_id: string;
 
-  @Column('decimal')
+  @Column()
   price: number;
 
-  @Column('integer')
+  @Column()
   quantity: number;
 
   @CreateDateColumn()
